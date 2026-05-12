@@ -1,4 +1,4 @@
 # Act4-Git-Activity
 Activity 4 Git Activity Collaboration
-Repane, Krizzia Lea M.
-Ticsay, Sherlin Vincent S.
+1. Repane, Krizzia Lea M.
+2. Ticsay, Sherlin Vincent S.
