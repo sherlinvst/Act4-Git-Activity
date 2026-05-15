@@ -1,4 +1,4 @@
-# simple calculator that handle arithmetic operations to showcase collaboration using git and Github
+# Simple Calculator with Improved Logic
 
 # Helper validation
 def is_number(x):
@@ -33,33 +33,48 @@ def divide(a, b):
     if b == 0:
         return "Error: Division by zero"
     return a / b
-    return "Error: Division by zero"
 
-# Main program with while loop
+
+# Dictionary to map operators to functions
+operations = {
+    "+": add,
+    "-": subtract,
+    "*": multiply,
+    "/": divide
+}
+
+
+def get_number(prompt):
+    """Safely get a number from the user."""
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+
+
+# Main calculator loop
 while True:
-    # User input
-    num1 = float(input("Enter first number: "))
+    print("\n=== Simple Calculator ===")
+
+    num1 = get_number("Enter first number: ")
     operator = input("Enter operator (+, -, *, /): ")
-    num2 = float(input("Enter second number: "))
 
-    # Call the correct function
-    if operator == "+":
-        result = add(num1, num2)
-    elif operator == "-":
-        result = subtract(num1, num2)
-    elif operator == "*":
-        result = multiply(num1, num2)
-    elif operator == "/":
-        result = divide(num1, num2)
-    else:
-        result = "Invalid operator"
+    # Validate operator first
+    if operator not in operations:
+        print("Invalid operator. Try again.")
+        continue
 
-    # Output
-    print("Result:", result)
+    num2 = get_number("Enter second number: ")
 
-    # Ask user if they want to continue
-    choice = input("Do you want to perform another calculation? (yes/no): ").lower()
+    # Perform calculation
+    result = operations[operator](num1, num2)
 
-    if choice != "yes":
+    print(f"Result: {result}")
+
+    # Continue or exit
+    choice = input("Do another calculation? (y/n): ").lower()
+
+    if choice != "y":
         print("Calculator closed.")
         break
