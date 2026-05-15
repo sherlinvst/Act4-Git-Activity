@@ -1,17 +1,37 @@
 # Simple Calculator with Improved Logic
 
+# Helper validation
+def is_number(x):
+    return isinstance(x, (int, float))
+
+
+# Addition
 def add(a, b):
+    if not (is_number(a) and is_number(b)):
+        return "Error: invalid input"
     return a + b
 
+
+# Subtraction
 def subtract(a, b):
+    if not (is_number(a) and is_number(b)):
+        return "Error: invalid input"
     return a - b
 
+
+# Multiplication
 def multiply(a, b):
+    if not (is_number(a) and is_number(b)):
+        return "Error: invalid input"
     return a * b
 
+
+# Division (improved safety)
 def divide(a, b):
+    if not (is_number(a) and is_number(b)):
+        return "Error: invalid input"
     if b == 0:
-        return "Error: Cannot divide by zero"
+        return "Error: Division by zero"
     return a / b
 
 
